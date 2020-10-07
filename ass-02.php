@@ -8,7 +8,9 @@ $fp=fopen($_SERVER['argv'][1],"r");
 $datas=[];
 $pattern=array('/\s+/','/\//');
 while(! feof($fp)){
-    $data=preg_split('/(\s+)|(\/)/',trim(fgets($fp)),$n);
+    // $n is not necessary.
+    //$data=preg_split('/(\s+)|(\/)/',trim(fgets($fp)),$n);
+    $data=preg_split('/(\s+)|(\/)/',trim(fgets($fp)));
     $datas[]=$data;
 }
 
