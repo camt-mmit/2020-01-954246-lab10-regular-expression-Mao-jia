@@ -14,6 +14,12 @@ while(! feof($fp)){
 
 fclose($fp);
 $datas=implode(" ",$datas);
+/**
+ * Same as the previous assignments, you cannot
+ * just chek for , or . because document may contain
+ * another symbols.
+ * Please correct this to work with all cases.
+ */
 $data=preg_split('/( [a-z]+)|(\, )|(\. )/',$datas);
 
 $output=[];
@@ -25,5 +31,7 @@ $pattern='/(?=.*[a-z]+)(?=.*[A-Z]+)/';
 $output=preg_filter($pattern,"$0", $output);
 
 foreach($output as $out){
-    if ($out!="My" and "The") printf("%s\n",$out);
+    // This must be
+    //if ($out!="My" and "The") printf("%s\n",$out);
+    if ($out!="My" && $out!="The") printf("%s\n",$out);
 }
