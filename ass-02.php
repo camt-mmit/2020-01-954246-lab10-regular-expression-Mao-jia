@@ -14,7 +14,16 @@ while(! feof($fp)){
 
 fclose($fp);
 
-$pattern='/(^\d+$)|(^\d+\.\d+$)|(^\d+\.$)|(^\d+\,$)/';
+/**
+ * This pattern seem OK but how did you know there are
+ * only . or , or / in your document, it may be contain : or ?.
+ * You cannot deal with all of symbols without meta-character.
+ * In this case, word boundary assertion \b can help.
+ * Change your pattern to '/\b(\d+)|(\d+\.\d+)\b/' or
+ * '/\b\d+(\.\d+)?\b/' for shorter.
+ */
+//$pattern='/(^\d+$)|(^\d+\.\d+$)|(^\d+\.$)|(^\d+\,$)/';
+$pattern='/\b\d+(\.\d+)?\b/';
 $output=[];
 foreach($datas as $data){
   $output[]=preg_filter($pattern,'$0',$data);
