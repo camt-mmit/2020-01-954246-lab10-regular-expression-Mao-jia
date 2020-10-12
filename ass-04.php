@@ -20,7 +20,7 @@ $datas=implode(" ",$datas);
  * another symbols.
  * Please correct this to work with all cases.
  */
-$data=preg_split('/( [a-z]+)|(\, )|(\. )/',$datas);
+$data=preg_split('/( [a-z]+)|(\, )|(\. )|(\!)|(\?)|(\")|(\<)|(\:)|(\>)|(\!\")|(\?\")|(\,\")|(\.\")/',$datas);
 
 $output=[];
 foreach($data as $data){
